@@ -52,4 +52,5 @@ endif()
 ########################################################################
 add_subdirectory(python)
 add_subdirectory(grc)
-add_subdirectory(examples)
+# XXX:
+#add_subdirectory(examples)

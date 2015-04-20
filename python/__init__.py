@@ -1,2 +1,2 @@
 
-from phase_comparator import *
+from grphasecomparator import *

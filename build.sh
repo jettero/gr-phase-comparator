@@ -1,5 +1,7 @@
 #!/bin/bash
 
+umask 022
+
 src_dir=$(dirname $(readlink -m $0))
 buildtmp="/tmp/$(id -u)/$(basename $src_dir)/"
 
