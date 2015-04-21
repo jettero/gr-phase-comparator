@@ -1,0 +1,35 @@
+<?xml version="1.0"?>
+
+<block>
+    <name>Phase Comparator</name>
+    <key>phase_comparator</key>
+    <category>Math Operators</category>
+    <import>import grphasecomparator</import>
+    <make>grphasecomparator.phase_comparator()</make>
+
+	<sink>
+		<name>in</name>
+        <type>complex</type>
+        <vlen>1</vlen>
+        <nports>2</nports>
+	</sink>
+
+	<source>
+        <name>out</name>
+		<type>float</type>
+        <vlen>1</vlen>
+	</source>
+
+    <doc>
+Lorem ipsum dolor sit amet, at sea mnesarchum repudiandae. Vix te quidam dolorum, est duis reformidans referrentur cu. Exerci oblique insolens mel an, vix appetere adipiscing ea, ad sed idque consul adipisci. Dolorem molestiae cum ad. Autem percipit delicatissimi ex vim.
+
+Maiorum splendide ea cum, ex qui stet quaerendum. No eum saepe scaevola consectetuer, cu has postulant expetendis. Vim nominavi phaedrum ex, vim minim officiis id, tempor labore offendit eu vis. No agam oporteat sapientem ius, his singulis salutatus et. Congue oblique delicata ius ne, est et meis primis, case convenire has eu. Ex mea tale zril populo, homero expetenda efficiendi ei mel.
+
+Sea quot ullum debet id. An elit veritus ius. Te has stet aperiam periculis, ullum doctus persecuti ex vis. Id mea putent animal scripta, mea alia mucius salutatus in, vel dicta partem praesent id.
+
+Ut eum doming accusam, cum et case idque molestiae. Usu graece verterem te. Est eu denique quaerendum, sed nemore melius ullamcorper ei. Est ei dico iusto maluisset. In diceret corrumpit duo, augue quidam possit quo no. Eu eos nostro reformidans.
+
+Accumsan imperdiet eum ex, an est rebum aliquip quaerendum, ea corpora lucilius nec. Eos no omnium similique, ius diceret aliquam commune et, est id dicat epicuri. Per augue inermis eu, est ne alia erant harum. Urbanitas similique nam eu, vim mentitum cotidieque voluptatibus no. In vis ferri detraxit. Ne nulla ornatus fabellas duo.
+    </doc>
+
+</block>
