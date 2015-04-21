@@ -18,7 +18,7 @@ class phase_comparator(gr.sync_block):
         Args:
         """
 
-        gr.sync_block.__init__(self, "phase_comparator", "complex64,complex64", "real")
+        gr.sync_block.__init__(self, "phase_comparator", ["complex64","complex64"], ["float"])
 
     def work(self, input_items, output_items):
         for i in range( len(input_items[0]) ):
