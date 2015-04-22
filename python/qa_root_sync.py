@@ -52,6 +52,12 @@ class qa_root_sync(gr_unittest.TestCase):
         for s in output:
             self.assertAlmostEqual(s, 0, delta=0.0001);
 
+    def test_001(self):
+        output = self._get_output(delay0=0, delay1=25)
+        for (i, s1) in enumerate(output):
+            s2 = output[ (i+1) % len(output) ]
+            self.assertAlmostEqual(s1, s2, delta=0.0001);
+
 if __name__ == '__main__':
     x = os.getenv("TEST_PREFIX")
 
