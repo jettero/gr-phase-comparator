@@ -18,7 +18,7 @@ class qa_root_sync(gr_unittest.TestCase):
     def tearDown(self):
         self.tb = None
 
-    def _get_output(self, samp_rate=430, freq0=43, freq1=43, delay0=0, delay1=0):
+    def _get_output(self, outputs=430, samp_rate=430, freq0=43, freq1=43, delay0=0, delay1=0):
         ##################################################
         # Blocks
         ##################################################
@@ -27,7 +27,7 @@ class qa_root_sync(gr_unittest.TestCase):
         d0   = blocks.delay(gr.sizeof_gr_complex*1, delay0)
         d1   = blocks.delay(gr.sizeof_gr_complex*1, delay1)
         pc   = grphasecomparator.phase_comparator()
-        fin  = blocks.head(gr.sizeof_float*1, 100);
+        fin  = blocks.head(gr.sizeof_float*1, outputs)
         dst  = blocks.vector_sink_f()
 
         ##################################################
@@ -47,16 +47,42 @@ class qa_root_sync(gr_unittest.TestCase):
 
         return dst.data()
 
-    def test_001(self):
+    def test_000(self):
         output = self._get_output(delay0=0, delay1=0)
         for s in output:
-            self.assertAlmostEqual(s, 0, delta=0.0001);
+            self.assertAlmostEqual(s, 0, delta=0.0001)
 
     def test_001(self):
-        output = self._get_output(delay0=0, delay1=25)
+        output = self._get_output(delay0=0, delay1=25)[25:]
         for (i, s1) in enumerate(output):
             s2 = output[ (i+1) % len(output) ]
-            self.assertAlmostEqual(s1, s2, delta=0.0001);
+            self.assertAlmostEqual(s1, s2, delta=0.0001)
+
+   #def test_002(self):
+   #    output = self._get_output(delay0=25, delay1=0)[25:]
+   #    for (i, s1) in enumerate(output):
+   #        s2 = output[ (i+1) % len(output) ]
+   #        self.assertAlmostEqual(s1, s2, delta=0.0001)
+
+   #def test_003(self):
+   #    output = self._get_output(delay0=0, delay1=100)[100:]
+   #    for (i, s1) in enumerate(output):
+   #        s2 = output[ (i+1) % len(output) ]
+   #        self.assertAlmostEqual(s1, s2, delta=0.0001)
+
+   #def test_004(self):
+   #    output = self._get_output(delay0=100, delay1=0)[100:]
+   #    for (i, s1) in enumerate(output):
+   #        s2 = output[ (i+1) % len(output) ]
+   #        self.assertAlmostEqual(s1, s2, delta=0.0001)
+
+   #def test_005(self):
+   #    output = self._get_output(freq0=43, freq1=47, delay0=100, delay1=100)[100:]
+
+   #    for (i,s1) in enumerate(output):
+   #        for (j,s2) in enumerate(output[i:]):
+   #            for s3 in output[j:]:
+   #                self.assertAlmostEqual( (s2-s1), (s3-s2), delta=0.01)
 
 if __name__ == '__main__':
     x = os.getenv("TEST_PREFIX")
