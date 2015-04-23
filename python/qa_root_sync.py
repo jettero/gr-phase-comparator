@@ -18,7 +18,7 @@ class qa_root_sync(gr_unittest.TestCase):
     def tearDown(self):
         self.tb = None
 
-    def _get_output(self, outputs=430, samp_rate=430, freq0=43, freq1=43, delay0=0, delay1=0):
+    def _get_output(self, outputs=860, samp_rate=860, freq0=43, freq1=43, delay0=0, delay1=0):
         ##################################################
         # Blocks
         ##################################################
