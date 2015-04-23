@@ -54,6 +54,16 @@ class qa_root_sync(gr_unittest.TestCase):
 
     def test_001(self):
         output = self._get_output(delay0=0, delay1=25)[25:]
+
+       #print ""
+       #for (i, s1) in enumerate(output):
+       #    j = (i+1) % len(output)
+       #    s2 = output[j]
+       #    print "[%3d,%3d %%4.1fv%4.1f]" % (i,j, s1, s2),
+       #    if ( j % 3 ) == 0:
+       #        print ""
+       #print ""
+
         for (i, s1) in enumerate(output):
             s2 = output[ (i+1) % len(output) ]
             self.assertAlmostEqual(s1, s2, delta=0.0001)
