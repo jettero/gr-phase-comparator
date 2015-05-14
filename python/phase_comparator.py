@@ -10,6 +10,8 @@ import sys
 INDEX_MODE  = 1234
 MINMAX_MODE = 5678
 
+TWO_PI = 2 * cmath.pi
+
 class phase_comparator(gr.sync_block):
     """
     Compare the difference in phase between two complex signals (accounting for wrapping)
@@ -34,9 +36,9 @@ class phase_comparator(gr.sync_block):
 
             output_items[0][i] = px - py
             if output_items[0][i] > cmath.pi:
-                output_items[0][i] = output_items[0][i] - 2*cmath.pi
+                output_items[0][i] = output_items[0][i] - TWO_PI
 
             elif output_items[0][i] < -cmath.pi:
-                output_items[0][i] = output_items[0][i] + 2*cmath.pi
+                output_items[0][i] = output_items[0][i] + TWO_PI
 
         return len(input_items[0])
