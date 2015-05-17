@@ -3,7 +3,7 @@ gr-phase-comparator
 
 It irks me that there's no built in GRC block for comparing phases and
 considering wrap-around.  Just how close is the phase exactly?  So here is a way
-to do it.
+to do it.  It may not be very good, but it works.
 
 ===========
 
