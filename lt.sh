@@ -4,4 +4,4 @@
 
 NO_TEST=1 ./build.sh
 
-PHC_DEBUG=1 python python/qa_test.py
+PHC_DEBUG=1 python python/qa_test.py 2>&1 >/dev/null | less
