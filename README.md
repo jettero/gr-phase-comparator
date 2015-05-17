@@ -22,18 +22,19 @@ http://gnuradio.org/redmine/projects/gnuradio/wiki/InstallingGR
 
 *Installing the Phase Comparator*
 
-buildname=gr-phase-comparator
-buildloc=/tmp/$buildname
+    buildname=gr-phase-comparator
+    buildloc=/tmp/$buildname
 
-git clone http://github.com/jettero/$buildname.git
-cd $buildname
-src="$(pwd)"
-mkdir $buildloc
-cd $buildloc
+    git clone http://github.com/jettero/$buildname.git
+    cd $buildname
+    src="$(pwd)"
+    mkdir $buildloc
+    cd $buildloc
 
-* skip the -DMAKE_INSTALL_PREFIX if you want /usr/local *
-cmake -DCMAKE_INSTALL_PREFIX=/usr "$src"
-sudo make install
+*skip the -DMAKE_INSTALL_PREFIX if you want /usr/local*
 
-* maybe, instead, just use my build script*
-PREFIX=/usr ./build.sh
+    cmake -DCMAKE_INSTALL_PREFIX=/usr "$src"
+    sudo make install
+
+*maybe, instead, just use my build script*
+    PREFIX=/usr ./build.sh
