@@ -38,6 +38,13 @@ class qa_root_sync(gr_unittest.TestCase):
             j = i + 1
             self.assertLess(data[i], data[j], "%f < %f" % (data[i],data[j]) )
 
+    def test_001(self):
+        data = self._get_output(f2=1100, f1=1000)
+
+        for i in range( len(data)-1 ):
+            j = i + 1
+            self.assertGreater(data[i], data[j], "%f > %f" % (data[i],data[j]) )
+
 if __name__ == '__main__':
     x = os.getenv("TEST_PREFIX")
 
