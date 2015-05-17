@@ -30,15 +30,11 @@
 	</source>
 
     <doc>
-Lorem ipsum dolor sit amet, at sea mnesarchum repudiandae. Vix te quidam dolorum, est duis reformidans referrentur cu. Exerci oblique insolens mel an, vix appetere adipiscing ea, ad sed idque consul adipisci. Dolorem molestiae cum ad. Autem percipit delicatissimi ex vim.
+Compare the difference in phase between two complex signals, trying to un-wrap PI rolls where possible (i.e., ideally the phase would progress: 3, 3.1, 3.15, 4, 5, 7, etc)
 
-Maiorum splendide ea cum, ex qui stet quaerendum. No eum saepe scaevola consectetuer, cu has postulant expetendis. Vim nominavi phaedrum ex, vim minim officiis id, tempor labore offendit eu vis. No agam oporteat sapientem ius, his singulis salutatus et. Congue oblique delicata ius ne, est et meis primis, case convenire has eu. Ex mea tale zril populo, homero expetenda efficiendi ei mel.
-
-Sea quot ullum debet id. An elit veritus ius. Te has stet aperiam periculis, ullum doctus persecuti ex vis. Id mea putent animal scripta, mea alia mucius salutatus in, vel dicta partem praesent id.
-
-Ut eum doming accusam, cum et case idque molestiae. Usu graece verterem te. Est eu denique quaerendum, sed nemore melius ullamcorper ei. Est ei dico iusto maluisset. In diceret corrumpit duo, augue quidam possit quo no. Eu eos nostro reformidans.
-
-Accumsan imperdiet eum ex, an est rebum aliquip quaerendum, ea corpora lucilius nec. Eos no omnium similique, ius diceret aliquam commune et, est id dicat epicuri. Per augue inermis eu, est ne alia erant harum. Urbanitas similique nam eu, vim mentitum cotidieque voluptatibus no. In vis ferri detraxit. Ne nulla ornatus fabellas duo.
+Args:
+    wrap_window: default=%s
+        e.g., if sample n-1 is above window[1] and sample n is below window[0], then wrap a couple PI
     </doc>
 
 </block>
