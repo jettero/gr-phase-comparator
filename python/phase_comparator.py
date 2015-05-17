@@ -59,10 +59,10 @@ class _phase_comparator_wrapper(gr.sync_block):
 
     def work(self, input_items, output_items):
         for (i,v) in enumerate(input_items[0]):
-            if self._last >= self._rw[1] and v <= self._rw[0]:
+            if self._last > self._rw[1] and v < self._rw[0]:
                 self._roll = self._roll + 1
 
-            if self._last <= self._rw[0] and v >= self._rw[1]:
+            if self._last < self._rw[0] and v > self._rw[1]:
                 self._roll = self._roll - 1
 
             output_items[0][i] = v + 2*math.pi*self._roll
