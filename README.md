@@ -20,9 +20,6 @@ sudo apt-get install gnuradio
 or maybe see this page:
 http://gnuradio.org/redmine/projects/gnuradio/wiki/InstallingGR
 
-
-*Installing gr-pyserial*
-
 buildname=gr-phase-comparator
 buildloc=/tmp/$buildname
 
