@@ -30,9 +30,10 @@ cd $buildname
 src="$(pwd)"
 mkdir $buildloc
 cd $buildloc
-# skip the -DMAKE_INSTALL_PREFIX if you want /usr/local
+
+* skip the -DMAKE_INSTALL_PREFIX if you want /usr/local *
 cmake -DCMAKE_INSTALL_PREFIX=/usr "$src"
 sudo make install
 
-# *or* just use my build script
+* maybe, instead, just use my build script*
 PREFIX=/usr ./build.sh
