@@ -7,7 +7,6 @@ include(GrPython)
 list(APPEND python_sources
     phase_comparator.py
     __init__.py    # virtual_channel_mux.py
-    qa_test.py
 )
 
 GR_PYTHON_INSTALL(

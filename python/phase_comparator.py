@@ -5,6 +5,8 @@ from gnuradio import blocks
 import numpy, math, cmath
 import os
 
+DEFAULT_WRAP = [-math.pi*0.9, math.pi*0.9]
+
 class phase_comparator(gr.hier_block2):
     """
     Compare the difference in phase between two complex signals, trying to
@@ -12,10 +14,20 @@ class phase_comparator(gr.hier_block2):
     3.1, 3.15, 4, 5, 7, etc)
     """
 
-    def __init__(self):
+    def __init__(self, wrap_window=DEFAULT_WRAP):
+        """
+        The wrapper blockblock handles the arg() rolling
+
+        Args:
+
+            wrap_window: default=%s
+                if sample n-1 is above window[1] and sample n is below window[0], then wrap a couple PI
+
+        """ % DEFAULT_WRAP
+
         self.conj = blocks.multiply_conjugate_cc(1)
         self.arg  = blocks.complex_to_arg(1)
-        self.pcw  = phase_comparator_wrapper()
+        self.pcw  = _phase_comparator_wrapper(wrap_window)
 
         # from pydoc:
         # gr.io_signature(int min_streams, int max_streams, int sizeof_stream_item) -> io_signature_sptr
@@ -31,18 +43,12 @@ class phase_comparator(gr.hier_block2):
         self.connect( (self,1), (self.conj,1) )
         self.connect( self.conj, self.arg, self.pcw, self )
 
-class phase_comparator_wrapper(gr.sync_block):
+class _phase_comparator_wrapper(gr.sync_block):
 
-    def __init__(self):
-        """
-        The wrapper blockblock handles the arg() rolling
-
-        Args:
-        """
-
+    def __init__(self, wrap_window=DEFAULT_WRAP):
         self._roll = 0
         self._last = 0
-        self._roll_window = [ -math.pi * 0.9, math.pi * 0.9 ]
+        self._rw = wrap_window
 
         if os.getenv("PHC_DEBUG"):
             self._debug = True
@@ -53,10 +59,10 @@ class phase_comparator_wrapper(gr.sync_block):
 
     def work(self, input_items, output_items):
         for (i,v) in enumerate(input_items[0]):
-            if self._last >= self._roll_window[1] and v <= self._roll_window[0]:
+            if self._last >= self._rw[1] and v <= self._rw[0]:
                 self._roll = self._roll + 1
 
-            if self._last <= self._roll_window[0] and v >= self._roll_window[1]:
+            if self._last <= self._rw[0] and v >= self._rw[1]:
                 self._roll = self._roll - 1
 
             output_items[0][i] = v + 2*math.pi*self._roll
