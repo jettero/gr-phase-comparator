@@ -12,7 +12,8 @@ Requirements
 GNU Radio 3.7
 python 
 
-*Installing GNU Radio*
+Installing GNU Radio
+====================
 
 maybe just run:
 sudo apt-get install gnuradio
@@ -20,7 +21,14 @@ sudo apt-get install gnuradio
 or maybe see this page:
 http://gnuradio.org/redmine/projects/gnuradio/wiki/InstallingGR
 
-*Installing the Phase Comparator*
+Installing the Phase Comparator
+===============================
+
+*using my build script*
+
+    PREFIX=/usr ./build.sh
+
+*building by hand*
 
     buildname=gr-phase-comparator
     buildloc=/tmp/$buildname
@@ -31,10 +39,7 @@ http://gnuradio.org/redmine/projects/gnuradio/wiki/InstallingGR
     mkdir $buildloc
     cd $buildloc
 
-*skip the -DMAKE_INSTALL_PREFIX if you want /usr/local*
-
+    # skip the -DMAKE_INSTALL_PREFIX if you want /usr/local
     cmake -DCMAKE_INSTALL_PREFIX=/usr "$src"
     sudo make install
 
-*maybe, instead, just use my build script*
-    PREFIX=/usr ./build.sh
