@@ -7,6 +7,7 @@ include(GrPython)
 list(APPEND python_sources
     phase_comparator.py
     __init__.py    # virtual_channel_mux.py
+    qa_test.py
 )
 
 GR_PYTHON_INSTALL(
@@ -21,7 +22,7 @@ GR_PYTHON_INSTALL(
 include(GrTest)
 
 list(APPEND extras_qa_sources
-    #TODO
+    qa_test.py
 )
 #assume super tree
 if(ENABLE_EXTRAS)
