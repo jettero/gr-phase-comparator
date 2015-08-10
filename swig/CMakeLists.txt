@@ -18,27 +18,40 @@
 # Boston, MA 02110-1301, USA.
 
 ########################################################################
-# Include python install macros
+# Include swig generation macros
 ########################################################################
-include(GrPython)
-if(NOT PYTHONINTERP_FOUND)
+find_package(SWIG)
+find_package(PythonLibs 2)
+if(NOT SWIG_FOUND OR NOT PYTHONLIBS_FOUND)
     return()
 endif()
+include(GrSwig)
+include(GrPython)
 
 ########################################################################
-# Install python sources
+# Setup swig generation
 ########################################################################
-GR_PYTHON_INSTALL(
+foreach(incdir ${GNURADIO_RUNTIME_INCLUDE_DIRS})
+    list(APPEND GR_SWIG_INCLUDE_DIRS ${incdir}/gnuradio/swig)
+endforeach(incdir)
+
+set(GR_SWIG_LIBRARIES gnuradio-phase_comparator)
+set(GR_SWIG_DOC_FILE ${CMAKE_CURRENT_BINARY_DIR}/phase_comparator_swig_doc.i)
+set(GR_SWIG_DOC_DIRS ${CMAKE_CURRENT_SOURCE_DIR}/../include)
+
+GR_SWIG_MAKE(phase_comparator_swig phase_comparator_swig.i)
+
+########################################################################
+# Install the build swig module
+########################################################################
+GR_SWIG_INSTALL(TARGETS phase_comparator_swig DESTINATION ${GR_PYTHON_DIR}/phase_comparator)
+
+########################################################################
+# Install swig .i files for development
+########################################################################
+install(
     FILES
-    __init__.py
-    DESTINATION ${GR_PYTHON_DIR}/phase_comparator
+    phase_comparator_swig.i
+    ${CMAKE_CURRENT_BINARY_DIR}/phase_comparator_swig_doc.i
+    DESTINATION ${GR_INCLUDE_DIR}/phase_comparator/swig
 )
-
-########################################################################
-# Handle the unit tests
-########################################################################
-include(GrTest)
-
-set(GR_TEST_TARGET_DEPS gnuradio-phase_comparator)
-set(GR_TEST_PYTHON_DIRS ${CMAKE_BINARY_DIR}/swig)
-GR_ADD_TEST(qa_phase_comparator ${PYTHON_EXECUTABLE} ${CMAKE_CURRENT_SOURCE_DIR}/qa_phase_comparator.py)

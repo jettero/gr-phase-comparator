@@ -18,27 +18,18 @@
 # Boston, MA 02110-1301, USA.
 
 ########################################################################
-# Include python install macros
+# Setup dependencies
 ########################################################################
-include(GrPython)
-if(NOT PYTHONINTERP_FOUND)
-    return()
-endif()
+find_package(Doxygen)
 
 ########################################################################
-# Install python sources
+# Begin conditional configuration
 ########################################################################
-GR_PYTHON_INSTALL(
-    FILES
-    __init__.py
-    DESTINATION ${GR_PYTHON_DIR}/phase_comparator
-)
+if(ENABLE_DOXYGEN)
 
 ########################################################################
-# Handle the unit tests
+# Add subdirectories
 ########################################################################
-include(GrTest)
+add_subdirectory(doxygen)
 
-set(GR_TEST_TARGET_DEPS gnuradio-phase_comparator)
-set(GR_TEST_PYTHON_DIRS ${CMAKE_BINARY_DIR}/swig)
-GR_ADD_TEST(qa_phase_comparator ${PYTHON_EXECUTABLE} ${CMAKE_CURRENT_SOURCE_DIR}/qa_phase_comparator.py)
+endif(ENABLE_DOXYGEN)
