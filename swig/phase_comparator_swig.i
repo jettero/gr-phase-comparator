@@ -5,7 +5,7 @@
 %include "gnuradio.i"			// the common stuff
 
 //load generated python docstrings
-%include "phase_comparator_swig_doc.i"
+//%include "phase_comparator_swig_doc.i"
 
 %{
 #include "phase_comparator/phase_comparator.h"

@@ -41,27 +41,3 @@ install(TARGETS gnuradio-phase_comparator
     ARCHIVE DESTINATION lib${LIB_SUFFIX} # .lib file
     RUNTIME DESTINATION bin              # .dll file
 )
-
-########################################################################
-# Build and register unit test
-########################################################################
-include(GrTest)
-
-include_directories(${CPPUNIT_INCLUDE_DIRS})
-
-list(APPEND test_phase_comparator_sources
-    ${CMAKE_CURRENT_SOURCE_DIR}/test_phase_comparator.cc
-    ${CMAKE_CURRENT_SOURCE_DIR}/qa_phase_comparator.cc
-)
-
-add_executable(test-phase_comparator ${test_phase_comparator_sources})
-
-target_link_libraries(
-  test-phase_comparator
-  ${GNURADIO_RUNTIME_LIBRARIES}
-  ${Boost_LIBRARIES}
-  ${CPPUNIT_LIBRARIES}
-  gnuradio-phase_comparator
-)
-
-GR_ADD_TEST(test_phase_comparator test-phase_comparator)

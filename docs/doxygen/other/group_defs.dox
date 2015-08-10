@@ -1,7 +1,0 @@
-/*!
- * \defgroup block GNU Radio PHASE_COMPARATOR C++ Signal Processing Blocks
- * \brief All C++ blocks that can be used from the PHASE_COMPARATOR GNU Radio
- *        module are listed here or in the subcategories below.
- *
- */
-

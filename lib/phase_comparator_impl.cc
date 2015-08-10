@@ -1,6 +1,6 @@
 /* -*- c++ -*- */
 /* 
- * Copyright 2015 <+YOU OR YOUR COMPANY+>.
+ * Copyright 2015 Paul Miller <paul@voltar.org>
  * 
  * This is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -25,46 +25,29 @@
 #include <gnuradio/io_signature.h>
 #include "phase_comparator_impl.h"
 
-namespace gr {
-  namespace phase_comparator {
+namespace gr { namespace phase_comparator {
 
-    phase_comparator::sptr
-    phase_comparator::make()
-    {
-      return gnuradio::get_initial_sptr
-        (new phase_comparator_impl());
-    }
+phase_comparator::sptr phase_comparator::make() {
+    return gnuradio::get_initial_sptr (new phase_comparator_impl());
+}
 
-    /*
-     * The private constructor
-     */
-    phase_comparator_impl::phase_comparator_impl()
-      : gr::sync_block("phase_comparator",
-              gr::io_signature::make(<+MIN_IN+>, <+MAX_IN+>, sizeof(<+ITYPE+>)),
-              gr::io_signature::make(<+MIN_OUT+>, <+MAX_OUT+>, sizeof(<+OTYPE+>)))
-    {}
+phase_comparator_impl::phase_comparator_impl() : gr::sync_block("phase_comparator",
+    gr::io_signature::make(2, 2, sizeof(gr_complex)), gr::io_signature::make(1, 1, sizeof(float))) { }
 
-    /*
-     * Our virtual destructor.
-     */
-    phase_comparator_impl::~phase_comparator_impl()
-    {
-    }
+phase_comparator_impl::~phase_comparator_impl() { }
 
-    int
-    phase_comparator_impl::work(int noutput_items,
-			  gr_vector_const_void_star &input_items,
-			  gr_vector_void_star &output_items)
-    {
-        const <+ITYPE+> *in = (const <+ITYPE+> *) input_items[0];
-        <+OTYPE+> *out = (<+OTYPE+> *) output_items[0];
+int phase_comparator_impl::work(int noutput_items, gr_vector_const_void_star &input_items,
+          gr_vector_void_star &output_items) {
 
-        // Do <+signal processing+>
+    const gr_complex *lhs = (const gr_complex *) input_items[0];
+    const gr_complex *rhs = (const gr_complex *) input_items[1];
 
-        // Tell runtime system how many output items we produced.
-        return noutput_items;
-    }
+    float *out = (float *) output_items[0];
 
-  } /* namespace phase_comparator */
-} /* namespace gr */
+    fprintf(stderr, "noutput_items = %d\n", noutput_items);
+
+    return noutput_items;
+}
+
+} /* namespace phase_comparator */ } /* namespace gr */
 

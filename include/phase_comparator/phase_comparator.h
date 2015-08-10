@@ -25,32 +25,29 @@
 #include <phase_comparator/api.h>
 #include <gnuradio/sync_block.h>
 
-namespace gr {
-  namespace phase_comparator {
+namespace gr { namespace phase_comparator {
 
-    /*!
-     * \brief <+description of block+>
-     * \ingroup phase_comparator
-     *
-     */
-    class PHASE_COMPARATOR_API phase_comparator : virtual public gr::sync_block
-    {
-     public:
-      typedef boost::shared_ptr<phase_comparator> sptr;
+/*!
+* \brief <+description of block+>
+* \ingroup phase_comparator
+*
+*/
+class PHASE_COMPARATOR_API phase_comparator : virtual public gr::sync_block {
+    public:
+        typedef boost::shared_ptr<phase_comparator> sptr;
 
-      /*!
-       * \brief Return a shared_ptr to a new instance of phase_comparator::phase_comparator.
-       *
-       * To avoid accidental use of raw pointers, phase_comparator::phase_comparator's
-       * constructor is in a private implementation
-       * class. phase_comparator::phase_comparator::make is the public interface for
-       * creating new instances.
-       */
-      static sptr make();
-    };
+        /*!
+        * \brief Return a shared_ptr to a new instance of phase_comparator::phase_comparator.
+        *
+        * To avoid accidental use of raw pointers, phase_comparator::phase_comparator's
+        * constructor is in a private implementation
+        * class. phase_comparator::phase_comparator::make is the public interface for
+        * creating new instances.
+        */
+        static sptr make();
+};
 
-  } // namespace phase_comparator
-} // namespace gr
+} /* namespace phase_comparator */ } /* namespace gr */
 
 #endif /* INCLUDED_PHASE_COMPARATOR_PHASE_COMPARATOR_H */
 

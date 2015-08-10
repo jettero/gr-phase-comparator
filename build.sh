@@ -31,10 +31,10 @@ fi
 set -e
 
 cmake -Wno-dev "-DCMAKE_INSTALL_PREFIX=${PREFIX:-/usr/local}" "$src_dir"
-make -j 7
+make -j 1
 
 [ -z "$NO_INSTALL" ] && \
-    sudo make install
+    sudo make -j 1 install
 
 [ -z "$NO_TEST" ] && \
     make test

@@ -1,41 +1,55 @@
-#!/usr/bin/env python
-# -*- coding: utf-8 -*-
-# 
-# Copyright 2015 <+YOU OR YOUR COMPANY+>.
-# 
-# This is free software; you can redistribute it and/or modify
-# it under the terms of the GNU General Public License as published by
-# the Free Software Foundation; either version 3, or (at your option)
-# any later version.
-# 
-# This software is distributed in the hope that it will be useful,
-# but WITHOUT ANY WARRANTY; without even the implied warranty of
-# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-# GNU General Public License for more details.
-# 
-# You should have received a copy of the GNU General Public License
-# along with this software; see the file COPYING.  If not, write to
-# the Free Software Foundation, Inc., 51 Franklin Street,
-# Boston, MA 02110-1301, USA.
-# 
+#!/usr/bin/env python2
+# coding: utf8
 
 from gnuradio import gr, gr_unittest
 from gnuradio import blocks
-import phase_comparator_swig as phase_comparator
+from gnuradio import analog
 
-class qa_phase_comparator (gr_unittest.TestCase):
+import phase_comparator, os
 
-    def setUp (self):
-        self.tb = gr.top_block ()
+class qa_root_sync(gr_unittest.TestCase):
+    def setUp(self):
+        self.tb = gr.top_block()
 
-    def tearDown (self):
+    def tearDown(self):
         self.tb = None
 
-    def test_001_t (self):
-        # set up fg
-        self.tb.run ()
-        # check data
+    def _get_output(self, samp_rate=10000, f2=1000, f1=1100, output=2000):
+        i1 = analog.sig_source_c(samp_rate, analog.GR_COS_WAVE, f1, 1, 0)
+        i2 = analog.sig_source_c(samp_rate, analog.GR_COS_WAVE, f2, 1, 0)
+        pc = phase_comparator.phase_comparator()
 
+        head = blocks.head(gr.sizeof_float*1, output)
+        outs = blocks.vector_sink_f(1)
+
+        self.tb.connect( (i1,0), (pc,0) )
+        self.tb.connect( (i2,0), (pc,1) )
+        self.tb.connect( (pc,0), (head,0) )
+        self.tb.connect( (head,0), (outs,0) )
+
+        self.tb.run()
+
+        return outs.data()
+
+    def test_000(self):
+        data = self._get_output()
+
+        for i in range( len(data)-1 ):
+            j = i + 1
+            self.assertLess(data[i], data[j], "%f < %f" % (data[i],data[j]) )
+
+    def test_001(self):
+        data = self._get_output(f2=1100, f1=1000)
+
+        for i in range( len(data)-1 ):
+            j = i + 1
+            self.assertGreater(data[i], data[j], "%f > %f" % (data[i],data[j]) )
 
 if __name__ == '__main__':
-    gr_unittest.run(qa_phase_comparator, "qa_phase_comparator.xml")
+    x = os.getenv("TEST_PREFIX")
+
+    if not x:
+        x = "test_"
+
+    gr_unittest.TestLoader.testMethodPrefix = x
+    gr_unittest.main ()

@@ -36,8 +36,7 @@ foreach(incdir ${GNURADIO_RUNTIME_INCLUDE_DIRS})
 endforeach(incdir)
 
 set(GR_SWIG_LIBRARIES gnuradio-phase_comparator)
-set(GR_SWIG_DOC_FILE ${CMAKE_CURRENT_BINARY_DIR}/phase_comparator_swig_doc.i)
-set(GR_SWIG_DOC_DIRS ${CMAKE_CURRENT_SOURCE_DIR}/../include)
+#set(GR_SWIG_DOC_DIRS ${CMAKE_CURRENT_SOURCE_DIR}/../include)
 
 GR_SWIG_MAKE(phase_comparator_swig phase_comparator_swig.i)
 
@@ -52,6 +51,6 @@ GR_SWIG_INSTALL(TARGETS phase_comparator_swig DESTINATION ${GR_PYTHON_DIR}/phase
 install(
     FILES
     phase_comparator_swig.i
-    ${CMAKE_CURRENT_BINARY_DIR}/phase_comparator_swig_doc.i
+ #  ${CMAKE_CURRENT_BINARY_DIR}/phase_comparator_swig_doc.i
     DESTINATION ${GR_INCLUDE_DIR}/phase_comparator/swig
 )

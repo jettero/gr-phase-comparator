@@ -2,6 +2,14 @@
 
 # local test (for the debug output)
 
-NO_TEST=1 ./build.sh
+FAKEROOT=/tmp/$(id -u)/usr
 
-PHC_DEBUG=1 python python/qa_test.py 2>&1 >/dev/null | less
+unset NO_INSTALL
+export NO_TEST=1 PREFIX=$FAKEROOT
+
+./build.sh
+
+set -x
+LD_LIBRARY_PATH=$FAKEROOT/lib \
+PYTHONPATH=$FAKEROOT/lib/python2.7/dist-packages/ \
+    python python/qa_phase_comparator.py

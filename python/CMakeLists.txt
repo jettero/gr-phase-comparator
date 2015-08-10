@@ -41,4 +41,5 @@ include(GrTest)
 
 set(GR_TEST_TARGET_DEPS gnuradio-phase_comparator)
 set(GR_TEST_PYTHON_DIRS ${CMAKE_BINARY_DIR}/swig)
-GR_ADD_TEST(qa_phase_comparator ${PYTHON_EXECUTABLE} ${CMAKE_CURRENT_SOURCE_DIR}/qa_phase_comparator.py)
+GR_ADD_TEST(qa_phase_comparator ${PYTHON_EXECUTABLE}
+    ${CMAKE_CURRENT_SOURCE_DIR}/qa_phase_comparator.py)
