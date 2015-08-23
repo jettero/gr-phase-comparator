@@ -23,8 +23,7 @@
 #define INCLUDED_PHASE_COMPARATOR_PHASE_COMPARATOR_H
 
 #include <phase_comparator/api.h>
-
-#include <gnuradio/sync_block.h>
+#include <gnuradio/hier_block2.h>
 
 namespace gr { namespace phase_comparator {
 
@@ -33,7 +32,7 @@ namespace gr { namespace phase_comparator {
 * \ingroup phase_comparator
 *
 */
-class PHASE_COMPARATOR_API phase_comparator : virtual public gr::sync_block {
+class PHASE_COMPARATOR_API phase_comparator : virtual public gr::hier_block2 {
     public:
         typedef boost::shared_ptr<phase_comparator> sptr;
 

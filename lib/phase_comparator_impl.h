@@ -29,8 +29,6 @@ namespace gr { namespace phase_comparator {
 
 class phase_comparator_impl : public phase_comparator {
     private:
-        gr::blocks::multiply_conjugate_cc::sptr conj;
-        gr::blocks::complex_to_arg::sptr arg;
 
     public:
         phase_comparator_impl();
@@ -38,8 +36,8 @@ class phase_comparator_impl : public phase_comparator {
 
         // Where all the action really happens
         int work(int noutput_items,
-        gr_vector_const_void_star &input_items,
-        gr_vector_void_star &output_items);
+            gr_vector_const_void_star &input_items,
+            gr_vector_void_star &output_items);
 };
 
 } /* namespace phase_comparator */ } /* namespace gr */

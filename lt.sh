@@ -16,7 +16,9 @@ fi
 unset NO_INSTALL
 export NO_TEST=1 PREFIX="$FAKEROOT"
 
-./build.sh
+./build.sh ; x=$?
+echo exit=$x
+[ $x -gt 1 ] && exit $x
 
 export LD_LIBRARY_PATH="$( find $FAKEROOT -type f -name \*.so -exec dirname {} \; | paste -s -d : - )"
 echo LD_LIBRARY_PATH=$LD_LIBRARY_PATH
