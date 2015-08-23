@@ -31,10 +31,18 @@ phase_comparator::sptr phase_comparator::make() {
     return gnuradio::get_initial_sptr (new phase_comparator_impl());
 }
 
-phase_comparator_impl::phase_comparator_impl() : gr::sync_block("phase_comparator",
-    gr::io_signature::make(2, 2, sizeof(gr_complex)), gr::io_signature::make(1, 1, sizeof(float))) { }
+phase_comparator_impl::phase_comparator_impl() :
+    gr::sync_block("phase_comparator",
+            gr::io_signature::make(2, 2, sizeof(gr_complex)),
+            gr::io_signature::make(1, 1, sizeof(float))
+    ),
+    conj( gr::blocks::multiply_conjugate_cc::make() ),
+    arg( gr::blocks::complex_to_arg::make() )
+{
+    /* nothing to do */
+}
 
-phase_comparator_impl::~phase_comparator_impl() { }
+phase_comparator_impl::~phase_comparator_impl() { /* nothing to do */ }
 
 int phase_comparator_impl::work(int noutput_items, gr_vector_const_void_star &input_items,
           gr_vector_void_star &output_items) {

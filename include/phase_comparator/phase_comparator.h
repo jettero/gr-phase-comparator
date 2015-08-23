@@ -23,6 +23,7 @@
 #define INCLUDED_PHASE_COMPARATOR_PHASE_COMPARATOR_H
 
 #include <phase_comparator/api.h>
+
 #include <gnuradio/sync_block.h>
 
 namespace gr { namespace phase_comparator {

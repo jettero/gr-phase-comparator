@@ -30,7 +30,13 @@ list(APPEND phase_comparator_sources
 )
 
 add_library(gnuradio-phase_comparator SHARED ${phase_comparator_sources})
-target_link_libraries(gnuradio-phase_comparator ${Boost_LIBRARIES} ${GNURADIO_RUNTIME_LIBRARIES})
+
+target_link_libraries(gnuradio-phase_comparator
+    ${Boost_LIBRARIES}
+    ${GNURADIO_RUNTIME_LIBRARIES} 
+    ${GNURADIO_BLOCKS_LIBRARIES} 
+)
+
 set_target_properties(gnuradio-phase_comparator PROPERTIES DEFINE_SYMBOL "gnuradio_phase_comparator_EXPORTS")
 
 ########################################################################
