@@ -4,8 +4,8 @@
     <name>Phase Comparator</name>
     <key>phase_comparator</key>
     <category>Math Operators</category>
-    <import>import phase_comparator.phase_comparator</import>
-    <make>phase_comparator(wrap_window=$wrap_window)</make>
+    <import>import phase_comparator</import>
+    <make>phase_comparator.phase_comparator(wrap_window=$wrap_window)</make>
 
     <param>
         <name>Wrap Window</name>
@@ -14,7 +14,7 @@
         <type>float</type>
     </param>
 
-    <check> len($wrap_window) == 2 and $(wrap_window)[0] &lt;= 0 and $(wrap_window)[1] &gt;= 0 </check>
+    <check> $wrap_window &gt;= 0 and $wrap_window &lt;= 3.14159 </check>
 
 	<sink>
 		<name>in</name>

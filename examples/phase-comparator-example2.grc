@@ -1,6 +1,6 @@
 <?xml version='1.0' encoding='ASCII'?>
 <flow_graph>
-  <timestamp>Sun May 17 09:17:51 2015</timestamp>
+  <timestamp>Sun Aug 23 18:53:47 2015</timestamp>
   <block>
     <key>options</key>
     <param>
@@ -492,41 +492,6 @@
     </param>
   </block>
   <block>
-    <key>phase_comparator</key>
-    <param>
-      <key>id</key>
-      <value>phase_comparator_0</value>
-    </param>
-    <param>
-      <key>_enabled</key>
-      <value>True</value>
-    </param>
-    <param>
-      <key>wrap_window</key>
-      <value>[-2,2]</value>
-    </param>
-    <param>
-      <key>affinity</key>
-      <value></value>
-    </param>
-    <param>
-      <key>minoutbuf</key>
-      <value>0</value>
-    </param>
-    <param>
-      <key>maxoutbuf</key>
-      <value>0</value>
-    </param>
-    <param>
-      <key>_coordinate</key>
-      <value>(488, 67)</value>
-    </param>
-    <param>
-      <key>_rotation</key>
-      <value>0</value>
-    </param>
-  </block>
-  <block>
     <key>blocks_probe_signal_x</key>
     <param>
       <key>id</key>
@@ -777,6 +742,41 @@
     <param>
       <key>_coordinate</key>
       <value>(992, 215)</value>
+    </param>
+    <param>
+      <key>_rotation</key>
+      <value>0</value>
+    </param>
+  </block>
+  <block>
+    <key>phase_comparator</key>
+    <param>
+      <key>id</key>
+      <value>phase_comparator_0</value>
+    </param>
+    <param>
+      <key>_enabled</key>
+      <value>True</value>
+    </param>
+    <param>
+      <key>wrap_window</key>
+      <value>1</value>
+    </param>
+    <param>
+      <key>affinity</key>
+      <value></value>
+    </param>
+    <param>
+      <key>minoutbuf</key>
+      <value>0</value>
+    </param>
+    <param>
+      <key>maxoutbuf</key>
+      <value>0</value>
+    </param>
+    <param>
+      <key>_coordinate</key>
+      <value>(488, 67)</value>
     </param>
     <param>
       <key>_rotation</key>
