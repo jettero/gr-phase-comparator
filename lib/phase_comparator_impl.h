@@ -1,22 +1,3 @@
-/* -*- c++ -*- */
-/* 
- * Copyright 2015 <+YOU OR YOUR COMPANY+>.
- * 
- * This is free software; you can redistribute it and/or modify
- * it under the terms of the GNU General Public License as published by
- * the Free Software Foundation; either version 3, or (at your option)
- * any later version.
- * 
- * This software is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
- * GNU General Public License for more details.
- * 
- * You should have received a copy of the GNU General Public License
- * along with this software; see the file COPYING.  If not, write to
- * the Free Software Foundation, Inc., 51 Franklin Street,
- * Boston, MA 02110-1301, USA.
- */
 
 #ifndef INCLUDED_PHASE_COMPARATOR_PHASE_COMPARATOR_IMPL_H
 #define INCLUDED_PHASE_COMPARATOR_PHASE_COMPARATOR_IMPL_H
@@ -27,12 +8,21 @@
 
 namespace gr { namespace phase_comparator {
 
+
 class phase_comparator_impl : public phase_comparator {
     private:
 
     public:
         phase_comparator_impl();
         ~phase_comparator_impl();
+};
+
+class phase_comparator_inner_impl : public phase_comparator_inner {
+    private:
+
+    public:
+        phase_comparator_inner_impl();
+        ~phase_comparator_inner_impl();
 
         // Where all the action really happens
         int work(int noutput_items,
@@ -40,7 +30,8 @@ class phase_comparator_impl : public phase_comparator {
             gr_vector_void_star &output_items);
 };
 
-} /* namespace phase_comparator */ } /* namespace gr */
 
-#endif /* INCLUDED_PHASE_COMPARATOR_PHASE_COMPARATOR_IMPL_H */
+} }
+
+#endif
 
