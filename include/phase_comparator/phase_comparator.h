@@ -12,13 +12,13 @@ namespace gr { namespace phase_comparator {
 class PHASE_COMPARATOR_API phase_comparator : virtual public gr::hier_block2 {
     public:
         typedef boost::shared_ptr<phase_comparator> sptr;
-        static sptr make();
+        static sptr make(float wrap_window);
 };
 
 class PHASE_COMPARATOR_API phase_comparator_inner : virtual public gr::sync_block {
     public:
         typedef boost::shared_ptr<phase_comparator_inner> sptr;
-        static sptr make();
+        static sptr make(float wrap_window);
 };
 
 

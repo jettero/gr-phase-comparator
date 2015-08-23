@@ -13,15 +13,18 @@ class phase_comparator_impl : public phase_comparator {
     private:
 
     public:
-        phase_comparator_impl();
+        phase_comparator_impl(float wrap_window);
         ~phase_comparator_impl();
 };
 
 class phase_comparator_inner_impl : public phase_comparator_inner {
     private:
+        float last;
+          int roll;
+        float rw[2];
 
     public:
-        phase_comparator_inner_impl();
+        phase_comparator_inner_impl(float wrap_window);
         ~phase_comparator_inner_impl();
 
         // Where all the action really happens
