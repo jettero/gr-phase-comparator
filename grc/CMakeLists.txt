@@ -18,5 +18,6 @@
 # Boston, MA 02110-1301, USA.
 
 install(FILES
-    phase_comparator_phase_comparator.xml DESTINATION share/gnuradio/grc/blocks
+    phase-comparator.xml
+    DESTINATION share/gnuradio/grc/blocks
 )
