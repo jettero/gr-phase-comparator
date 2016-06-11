@@ -34,7 +34,8 @@ cmake -Wno-dev "-DCMAKE_INSTALL_PREFIX=${PREFIX:-/usr/local}" "$src_dir"
 make -j 1
 
 [ -z "$NO_INSTALL" ] && \
-    sudo make -j 1 install
+    make -j 1 install \
+        || sudo make -j 1 install
 
 [ -z "$NO_TEST" ] && \
     make test
