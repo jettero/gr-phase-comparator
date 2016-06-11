@@ -30,12 +30,18 @@ fi
 
 set -e
 
-cmake -Wno-dev "-DCMAKE_INSTALL_PREFIX=${PREFIX:-/usr/local}" "$src_dir"
+PREFIX="${PREFIX:-/usr/local}"
+
+cmake -Wno-dev "-DCMAKE_INSTALL_PREFIX=$PREFIX" "$src_dir"
 make -j 1
 
-[ -z "$NO_INSTALL" ] && \
-    make -j 1 install \
-        || sudo make -j 1 install
+if [ -z "$NO_INSTALL" ]; then
+    if touch $PREFIX/.touch 2>/dev/null
+        then      make -j 1 install
+        else sudo make -j 1 install
+    fi
+fi
 
-[ -z "$NO_TEST" ] && \
-    make test
+if [ -z "$NO_TEST" ]
+    then make test
+fi
